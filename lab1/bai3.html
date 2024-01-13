@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="inputString">String:</label>
+    <input type="text" id="inputString">
+    <button onclick="convertString()">Convert</button>
+
+    <p id="outputString"></p>
+
+    <script>
+        function convertString() {
+            var input = document.getElementById("inputString").value;
+            const cleanedString = input.replace(/[^\w\s]/gi, '');
+            const camelCaseString = toCamelCase(cleanedString);
+
+            document.getElementById("outputString").innerText = camelCaseString;
+        }
+
+        function toCamelCase(input) {
+            const words = input.split(/\s+/);
+
+            for (let i = 1; i < words.length; i++) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+            }
+
+            const camelCaseString = words.join('');
+
+            return camelCaseString;
+        }
+    </script>
+
+</body>
+
+</html>

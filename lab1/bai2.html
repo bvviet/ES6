@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Và Danh Sách</title>
+    <style>
+        .user_item {
+            color: green;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="userForm">
+        ID: <input type="text" id="userId" required><br>
+        Name: <input type="text" id="userName" required><br>
+        Gender:
+        <select id="userGender">
+            <option value="1">male</option>
+            <option value="2">famalc</option>
+        </select>
+        <br>
+        <button type="button" onclick="addUser()">Add</button>
+    </form>
+
+    <ul id="userList">
+    </ul>
+
+    <script>
+        var users = [];
+        // Thêm
+        const addUser = () => {
+            const userId = document.querySelector('#userId').value
+            const userName = document.querySelector('#userName').value
+            const userGender = document.querySelector('#userGender').value
+            if (userId && userName && userGender) {
+                const newUser = {
+                    id: parseInt(userId),
+                    name: userName,
+                    gender: parseInt(userGender),
+                };
+
+                users.push(newUser);
+                console.log(users);
+                render(users)
+            } else {
+                console.log('Vui lòng nhập đầy đủ thông tin người dùng.');
+            }
+        }
+        
+        // Hiển thị
+        const render = (users) => {
+            const userList = document.querySelector('#userList')
+            const li = document.createElement('li')
+            users.map((value, index) => {
+                li.textContent = `${value.id} - ${value.name} - ${value.gender}`
+                userList.appendChild(li)
+            })
+        }  
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let classRoom = [
+            "Vũ Tiến Việt",
+            "Bàn Văn Việt",
+            "Vũ Văn Việt",
+            "Vũ Minh Việt",
+            "Thầy Vũ Anh Tú",
+        ];
+        //tách riêng họ và tên
+   
+
+        let separatedNames = classRoom.map(fullName => {
+            let parts = fullName.trim().split(/\s+/);
+            return { lastName: parts[0], firstName: parts.slice(1).join(' ') };
+        });
+
+        classRoom();
+    </script>
+
+</body>
+</html>
